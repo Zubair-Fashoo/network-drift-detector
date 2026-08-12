@@ -1,0 +1,23 @@
+devices:
+  - name: "VirtualRouter1"
+    host: "localhost"
+    port: 22
+    username: "your_username"
+    password: "your_password_here"
+    device_type: "frrouting"
+    commands:
+      - command: "sudo vtysh -c 'show running-config'"
+        output_file: "running_config.txt"
+      - command: "sudo vtysh -c 'show ip route'"
+        output_file: "ip_routes.txt"
+
+settings:
+  check_interval_minutes: 1
+  log_file: "logs/drift.log"
+  report_dir: "reports/"
+  git_commit_on_change: true
+
+alerts:
+  console: true
+  log_file: true
+  email: false
